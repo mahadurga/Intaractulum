@@ -9,123 +9,182 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            background: linear-gradient(135deg, #e0e0e0, #ffffff); /* Gradient background */
             color: #333;
+            text-align: center;
         }
 
         header {
-            background-color: #003366; /* Navy color */
-            color: #ffcc00; /* Yellow color */
-            padding: 1rem;
-            text-align: center;
-            width: 100%;
-            box-sizing: border-box;
+            padding: 2rem;
+            background-color: #ffffff; /* White background for the header */
+            border-bottom: 1px solid #ddd; /* Subtle bottom border */
         }
 
         header h1 {
             margin: 0;
+            font-size: 2.5rem;
+            color: #333;
         }
 
         main {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 6rem); /* Adjust based on header/footer height */
-            padding: 1rem;
-            background-color: #f5f5f5;
+            min-height: calc(100vh - 80px); /* Adjust height to fit within the viewport */
+            padding: 2rem;
         }
 
-        .signup-form {
-            background-color: #fff;
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 2rem;
+            background: #ffffff; /* White background for the form container */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            width: 100%;
-            max-width: 400px; /* Limit the width of the form */
-            margin: 0 auto; /* Center the form horizontally */
+            text-align: left;
         }
 
-        .signup-form h2 {
-            margin-top: 0;
-            color: #003366; /* Navy color */
+        .form-container h2 {
+            color: #007bff; /* Blue color for headings */
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #007bff; /* Blue underline for emphasis */
+            padding-bottom: 0.5rem;
         }
 
-        .signup-form label {
+        .form-container label {
             display: block;
-            margin: 0.5rem 0 0.25rem;
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-container button {
+            background-color: #007bff; /* Blue color */
+            color: #ffffff; /* White text */
+            padding: 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3; /* Darker blue for hover effect */
+        }
+
+        .form-container p {
+            margin: 1rem 0;
+        }
+
+        .form-container a {
+            color: #007bff; /* Blue color */
+            text-decoration: none;
             font-weight: bold;
         }
 
-        .signup-form input, 
-        .signup-form select {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        .form-container a:hover {
+            text-decoration: underline;
         }
 
-        .signup-form button {
-            background-color: #003366; /* Navy color */
-            color: #fff;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            width: 100%;
+        nav {
+            margin: 1.5rem 0;
         }
 
-        .signup-form button:hover {
-            background-color: #ffcc00; /* Yellow color */
-            color: #003366; /* Navy color */
+        nav a {
+            background-color: #007bff; /* Blue color */
+            color: #ffffff; /* White text */
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0056b3; /* Darker blue for hover effect */
         }
 
         footer {
-            background-color: #003366; /* Navy color */
-            color: #ffcc00; /* Yellow color */
+            background-color: #ffffff; /* White background for consistency */
+            color: #666;
             text-align: center;
-            padding: 0.5rem;
-            width: 100%;
-            box-sizing: border-box;
-            position: fixed;
-            bottom: 0;
+            padding: 1rem;
+            border-top: 1px solid #ddd; /* Subtle top border */
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Sign Up for Interactulum</h1>
+        <h1>Interactulum</h1>
     </header>
     <main>
-        <section class="signup-form">
-            <h2>Create Your Account</h2>
-            <form action="/submit-signup" method="post">
-                <label for="role">Select Role:</label>
+        <div class="form-container">
+            <h2>Sign Up</h2>
+            <form id="signupForm">
+                <label for="role">Role:</label>
                 <select id="role" name="role" required>
-                    <option value="" disabled selected>Select your role</option>
+                    <option value="">Select Role</option>
                     <option value="student">Student</option>
                     <option value="alumni">Alumni</option>
                 </select>
-
                 <label for="email">Gmail:</label>
-                <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
-
+                <input type="email" id="email" name="email" required>
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Your username" required>
-
+                <input type="text" id="username" name="username" required>
                 <label for="password">Set Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
-
-                <button type="submit">Submit</button>
+                <input type="password" id="password" name="password" required>
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="login.html">Login</a></p>
             </form>
-        </section>
+        </div>
+<div id="chatbot-container">
+        <iframe src="chatbot.html" style="display:none;"></iframe>
+    </div>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
     </main>
     <footer>
         <p>&copy; 2024 Interactulum. All rights reserved.</p>
     </footer>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+            
+            const role = document.getElementById('role').value;
+            const username = document.getElementById('username').value;
+            
+            // Save user role in localStorage
+            localStorage.setItem('role', role);
+            localStorage.setItem('username', username);
+            
+            // Redirect based on role
+            if (role === 'student') {
+                window.location.href = 'student-dashboard.html';
+            } else if (role === 'alumni') {
+                window.location.href = 'alumni-dashboard.html';
+            } else {
+                alert('Please select a valid role.');
+            }
+        });
+    </script>
 </body>
 </html>
+
