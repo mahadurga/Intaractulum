@@ -3,28 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactulum - Welcome</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Index - Interactulum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0e0e0, #ffffff); /* Gradient background */
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            padding: 2rem;
+            background-color: #ffffff; /* White background for the header */
+            border-bottom: 1px solid #ddd; /* Subtle bottom border */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px); /* Adjust height to fit within the viewport */
+            padding: 2rem;
+        }
+
+        .about {
+            max-width: 800px;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            color: #333;
+            text-align: left;
+            /* No box styling here */
+        }
+
+        .about h2 {
+            color: #007bff; /* Blue color for headings */
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #007bff; /* Blue underline for emphasis */
+            padding-bottom: 0.5rem;
+        }
+
+        .about p {
+            line-height: 1.6;
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+            color: #666; /* Dark grey for softer text color */
+        }
+
+        nav {
+            margin: 1.5rem 0;
+        }
+
+        nav a {
+            background-color: #007bff; /* Blue color */
+            color: #ffffff; /* White text */
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0056b3; /* Darker blue for hover effect */
+        }
+
+        footer {
+            background-color: #ffffff; /* White background for consistency */
+            color: #666;
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid #ddd; /* Subtle top border */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to Interactulum</h1>
-        <nav>
-            <a href="signup.html" class="button">Sign Up</a>
-            <a href="#login" class="button">Login</a>
-        </nav>
+        <h1>Interactulum</h1>
     </header>
     <main>
-        <section class="intro">
-            <h2>Alumni-Student Engagement Platform</h2>
-            <p>Enhance your career and connect with industry professionals through our platform. Sign up or log in to start engaging with our vibrant community.</p>
-            <div class="auth-buttons">
-                <a href="signup.html" class="button">Sign Up</a>
-                <a href="#login" class="button">Login</a>
-            </div>
+        <h2>Welcome to the Alumni-Student Engagement Platform</h2>
+        <section class="about">
+            <h2>About Our Platform</h2>
+            <p>Interactulum is dedicated to creating meaningful connections between alumni and students. Our platform provides opportunities for alumni to mentor students, share insights from their professional experiences, and offer valuable career advice.</p>
+            <p>Alumni can reconnect with peers, offer mentorship, and contribute to the growth of future professionals. Students benefit from access to a network of experienced professionals, receive guidance, and enhance their career prospects.</p>
+            <p>Join us in building a dynamic community where every interaction fosters success and opportunity.</p>
         </section>
+        <nav>
+            <a href="signup.html">Sign Up</a>
+            <a href="login.html">Login</a>
+        </nav>
+<div id="chatbot-container">
+        <iframe src="chatbot.html" style="display:none;"></iframe>
+    </div>
     </main>
     <footer>
+   
         <p>&copy; 2024 Interactulum. All rights reserved.</p>
     </footer>
 </body>
