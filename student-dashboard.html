@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Interactulum</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            background-color: #006699;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h3 {
+            color: #003366;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+
+        .section a {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #003366;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .section a:hover {
+            background-color: #ff9900;
+            color: white;
+        }
+
+        footer {
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ffcc00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #ff9900;
+        }
+
+        .btn {
+            background-color: #003366;
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #006699;
+        }
+
+           </style>
+</head>
+<body>
+    <header>
+        <h1>Student Dashboard</h1>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="student-dashboard.html">Dashboard</a>
+        <a href="notes.html">Notes</a>
+        <a href="progress.html">Progress</a>
+        <a href="student-livesession.html">Live Sessions</a>
+        <a href="mentorship.html">Mentorship</a>
+        <a href="career-guidance.html">Career Guidance</a>
+        <a href="placement-assistance.html">Placement Assistance</a>
+        <a href="#logout" class="btn" onclick="logout()">Log Out</a>
+    </nav>
+
+    <main>
+        <div class="content">
+            <h2>Welcome, Student!</h2>
+
+            <!-- Search Bar -->
+            <div class="section">
+                <input type="text" placeholder="Search mentors, sessions, or notes" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem;">
+            </div>
+
+            <!-- Profile Section -->
+            <div class="section">
+                <h3>My Profile</h3>
+                <a href="edit-profile.html">Edit Profile</a>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="section">
+                <h3>Notes</h3>
+                <p>Access and manage your personal notes here.</p>
+                <a href="notes.html">View Notes</a>
+            </div>
+
+            <!-- Progress Section -->
+            <div class="section">
+                <h3>Progress</h3>
+                <p>Track your progress with visual charts and graphs.</p>
+                <a href="progress.html">View Progress</a>
+            </div>
+
+            <!-- Live Sessions Section -->
+            <div class="section">
+                <h3>Live Sessions</h3>
+                <p>Join live sessions and webinars related to your courses.</p>
+                <a href="student-livesession.html">View Live Sessions</a>
+
+                           </div>
+
+            <!-- Mentorship Section -->
+            <div class="section">
+                <h3>Mentorship & Guidance</h3>
+                <p>Connect with mentors and seek guidance for your academic journey.</p>
+                <a href="mentorship.html">Find a Mentor</a>
+            </div>
+
+            <!-- Career Guidance Section -->
+            <div class="section">
+                <h3>Career Guidance</h3>
+                <p>Get insights and advice to shape your career path.</p>
+                <a href="career-guidance.html">Career Guidance</a>
+            </div>
+
+            <!-- Placement Assistance Section -->
+            <div class="section">
+                <h3>Placement Assistance</h3>
+                <p>Explore placement opportunities and resources.</p>
+                <a href="placement-assistance.html">Placement Assistance</a>
+            </div>
+
+            <!-- Logout Button -->
+            <a href="#" class="btn" onclick="logout()">Log Out</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Interactulum. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Code to display the upcoming live session link from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const upcomingSessionLink = localStorage.getItem('liveSessionDetails');
+            const upcomingSessionElement = document.getElementById('upcomingSession');
+
+            if (upcomingSessionLink) {
+                const sessionLink = document.createElement('a');
+                sessionLink.href = upcomingSessionLink;
+                sessionLink.textContent = 'Upcoming Live Session';
+                sessionLink.style.display = 'inline-block';
+                sessionLink.style.backgroundColor = '#ffcc00';
+                sessionLink.style.color = '#003366';
+                sessionLink.style.padding = '10px 20px';
+                sessionLink.style.textDecoration = 'none';
+                sessionLink.style.borderRadius = '5px';
+                sessionLink.style.fontSize = '16px';
+                sessionLink.style.transition = 'background-color 0.3s';
+                sessionLink.style.marginTop = '10px';
+                sessionLink.style.display = 'block';
+
+                sessionLink.addEventListener('mouseover', function() {
+                    sessionLink.style.backgroundColor = '#ff9900';
+                    sessionLink.style.color = 'white';
+                });
+
+                sessionLink.addEventListener('mouseout', function() {
+                    sessionLink.style.backgroundColor = '#ffcc00';
+                    sessionLink.style.color = '#003366';
+                });
+
+                upcomingSessionElement.appendChild(sessionLink);
+            }
+        });
+
+     function logout() {
+    console.log('Logout function called');
+    localStorage.removeItem('userSession');
+    sessionStorage.removeItem('userSession');
+    window.location.href = 'login.html';
+}
+ 
+           </script>
+</body>
+</html>
