@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Live Session</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            color: white;
+            background: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #45a049;
+        }
+
+        .message {
+            color: #28a745;
+            display: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="student-dashboard.html">Back to Dashboard</a>
+        <a href="logout.php">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Create Live Session</h1>
+        <form id="liveSessionForm">
+            <div class="form-group">
+                <label for="username">Alumni Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Session Content:</label>
+                <textarea id="content" name="content" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn">Save Session</button>
+            <div id="message" class="message">
+                Session details saved successfully!
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('liveSessionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const content = document.getElementById('content').value;
+
+            fetch('save-session.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, content }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const messageElement = document.getElementById('message');
+                    messageElement.style.display = 'block';
+                    setTimeout(function() {
+                        window.location.href = 'alumni-dashboard.html';
+                    }, 2000); // 2 seconds delay
+                } else {
+                    alert('Error saving session details');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
