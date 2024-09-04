@@ -7,7 +7,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $loginType = $_POST['login_type']; // To differentiate between student and alumni login
+    $loginType = $_POST['loginType'];// To differentiate between student and alumni login
 
     if ($loginType == 'alumni') {
         // Check if the user is an alumni
