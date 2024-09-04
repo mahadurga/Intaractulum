@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Carousel</title>
+    <style>
+        /* Basic styling for the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        /* Container for the carousel at the top of the page */
+        .carousel-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background-color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Individual mentor card styling */
+        .mentor-card {
+            display: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Show the active mentor card */
+        .mentor-card.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Styling for mentor details */
+        .mentor-card h3 {
+            margin: 10px 0;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .mentor-card h4 {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .mentor-card p {
+            margin: 5px 0 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Carousel container for mentors -->
+    <div class="carousel-container">
+        <div class="mentor-card" id="mentor1">
+            <h3>John Doe</h3>
+            <h4>Software Engineer, Class of 2020</h4>
+            <p>Expert in AI and Machine Learning with over 10 years of experience in the tech industry.</p>
+        </div>
+        <div class="mentor-card" id="mentor2">
+            <h3>Jane Smith</h3>
+            <h4>Data Scientist, Class of 2019</h4>
+            <p>Specializes in big data analytics and predictive modeling, helping businesses make data-driven decisions.</p>
+        </div>
+        <div class="mentor-card" id="mentor3">
+            <h3>Raj Kumar</h3>
+            <h4>Senior Developer, Class of 2018</h4>
+            <p>Experienced in web technologies and cloud computing, working on innovative web solutions.</p>
+        </div>
+        <div class="mentor-card" id="mentor4">
+            <h3>Emily Brown</h3>
+            <h4>Product Manager, Class of 2017</h4>
+            <p>Leads product development teams with a focus on user experience and market strategy.</p>
+        </div>
+        <div class="mentor-card" id="mentor5">
+            <h3>Michael Lee</h3>
+            <h4>Cybersecurity Expert, Class of 2016</h4>
+            <p>Specialist in cybersecurity solutions, protecting enterprises from digital threats.</p>
+        </div>
+        <div class="mentor-card" id="mentor6">
+            <h3>Sara White</h3>
+            <h4>AI Researcher, Class of 2015</h4>
+            <p>Conducts cutting-edge research in artificial intelligence, focusing on neural networks and deep learning.</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle mentor transitions
+        let currentMentorIndex = 0;
+        const mentors = document.querySelectorAll('.mentor-card');
+        const totalMentors = mentors.length;
+
+        // Function to show the next mentor card with a transition
+        function showNextMentor() {
+            mentors.forEach((mentor, index) => {
+                mentor.classList.remove('active');
+            });
+            currentMentorIndex = (currentMentorIndex + 1) % totalMentors; // Loop back to the first mentor
+            mentors[currentMentorIndex].classList.add('active');
+        }
+
+        // Show the first mentor on page load
+        window.onload = () => {
+            mentors[currentMentorIndex].classList.add('active');
+            setInterval(showNextMentor, 3000); // Change mentor every 3 seconds
+        };
+    </script>
+
+</body>
+</html>
+
+
+
