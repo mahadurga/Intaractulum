@@ -1,116 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index - Interactulum</title>
+    <title>Landing Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        *, html, body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #e0e0e0, #ffffff); /* Gradient background */
-            color: #333;
-            text-align: center;
+            box-sizing: border-box;
         }
 
-        header {
-            padding: 2rem;
-            background-color: #ffffff; /* White background for the header */
-            border-bottom: 1px solid #ddd; /* Subtle bottom border */
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #333;
-        }
-
-        main {
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 80px); /* Adjust height to fit within the viewport */
-            padding: 2rem;
+            background: linear-gradient(to bottom right, #ff966d, #fa538d, #89379c);
+            overflow: hidden;
         }
 
-        .about {
-            max-width: 800px;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            color: #333;
-            text-align: left;
-            /* No box styling here */
+        .container {
+            width: 80vw;
+            height: 70vh;
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-areas: "hero";
+            box-shadow: 0 0 17px 10px rgb(0 0 0 / 30%);
+            border-radius: 20px;
+            background: white;
+            overflow: hidden;
+            position: relative;
         }
 
-        .about h2 {
-            color: #007bff; /* Blue color for headings */
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #007bff; /* Blue underline for emphasis */
-            padding-bottom: 0.5rem;
+        .design {
+            grid-area: design;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
-        .about p {
-            line-height: 1.6;
-            font-size: 1.1rem;
-            margin: 0.5rem 0;
-            color: #666; /* Dark grey for softer text color */
+        .rotate-45 {
+            transform: rotate(-45deg);
         }
 
-        nav {
-            margin: 1.5rem 0;
+        .design .pill-1,
+        .design .pill-2,
+        .design .pill-3,
+        .design .pill-4 {
+            background: linear-gradient(#ff966d, #fa538d, #89379c);
+            animation: float 6s ease-in-out infinite;
         }
 
-        nav a {
-            background-color: #007bff; /* Blue color */
-            color: #ffffff; /* White text */
-            padding: 1rem 2rem;
-            margin: 0.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            display: inline-block;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
+        .design .pill-1 {
+            bottom: 0;
+            left: -40px;
+            position: absolute;
+            width: 80px;
+            height: 200px;
+            border-radius: 40px;
+            animation: pill1-animation 6s infinite;
         }
 
-        nav a:hover {
-            background-color: #0056b3; /* Darker blue for hover effect */
+        .design .pill-2 {
+            top: -100px;
+            left: -80px;
+            position: absolute;
+            height: 450px;
+            width: 220px;
+            border-radius: 200px;
+            border: 30px solid #e2c5e2;
+            animation: pill2-animation 6s infinite;
         }
 
-        footer {
-            background-color: #ffffff; /* White background for consistency */
-            color: #666;
+        .design .pill-3 {
+            top: -100px;
+            left: 160px;
+            position: absolute;
+            height: 200px;
+            width: 100px;
+            border-radius: 70px;
+            animation: pill3-animation 6s infinite;
+        }
+
+        .design .pill-4 {
+            bottom: -180px;
+            left: 220px;
+            position: absolute;
+            height: 300px;
+            width: 120px;
+            border-radius: 70px;
+            background: linear-gradient(#ff966d, #fa538d);
+            animation: pill4-animation 6s infinite;
+        }
+
+        .hero {
+            grid-area: hero;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 1rem;
-            border-top: 1px solid #ddd; /* Subtle top border */
+            position: relative;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .hero h1, .hero p {
+            opacity: 1;
+            transition: opacity 1s ease-in-out, font-family 1s ease-in-out;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 2.5rem;
+            color: #333;
+            animation: font-change 5s infinite;
+        }
+
+        .hero p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: #666;
+            margin: 20px 0;
+            animation: font-change 5s infinite 2s;
+        }
+
+        .cta-btn {
+            padding: 10px 20px;
+            color: white;
+            background: linear-gradient(to right, #ff966d, #fa538d, #89379c);
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: linear-gradient(to right, #fa538d, #89379c, #ff966d);
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 50% 50%;
+                grid-template-areas: "design hero";
+            }
+
+            .design {
+                display: block;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pill1-animation {
+            0% {
+                transform: rotate(0deg) translateY(0);
+            }
+            50% {
+                transform: rotate(45deg) translateY(-20px);
+            }
+            100% {
+                transform: rotate(0deg) translateY(0);
+            }
+        }
+
+        @keyframes pill2-animation {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(15deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes pill3-animation {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(15deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes pill4-animation {
+            0% {
+                transform: rotate(0deg) translateX(0);
+            }
+            50% {
+                transform: rotate(20deg) translateX(-20px);
+            }
+            100% {
+                transform: rotate(0deg) translateX(0);
+            }
+        }
+
+        @keyframes font-change {
+            0% {
+                font-family: 'Poppins', sans-serif;
+                opacity: 0;
+            }
+            50% {
+                font-family: 'Poppins', sans-serif;
+                opacity: 1;
+            }
+            100% {
+                font-family: 'Poppins', sans-serif;
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Interactulum</h1>
-    </header>
-    <main>
-        <h2>Welcome to the Alumni-Student Engagement Platform</h2>
-        <section class="about">
-            <h2>About Our Platform</h2>
-            <p>Interactulum is dedicated to creating meaningful connections between alumni and students. Our platform provides opportunities for alumni to mentor students, share insights from their professional experiences, and offer valuable career advice.</p>
-            <p>Alumni can reconnect with peers, offer mentorship, and contribute to the growth of future professionals. Students benefit from access to a network of experienced professionals, receive guidance, and enhance their career prospects.</p>
-            <p>Join us in building a dynamic community where every interaction fosters success and opportunity.</p>
-        </section>
-        <nav>
-            <a href="signup.html">Sign Up</a>
-            <a href="login.html">Login</a>
-        </nav>
-<div id="chatbot-container">
-        <iframe src="chatbot.html" style="display:none;"></iframe>
+    <div class="container">
+        <div class="design">
+            <div class="pill-1"></div>
+            <div class="pill-2"></div>
+            <div class="pill-3"></div>
+            <div class="pill-4"></div>
+        </div>
+        <div class="hero">
+            <h1>Welcome to Interactulum</h1>
+            <p>Unlock your creative potential and embark on a transformative journey by signing up for pottery lessons today.</p>
+          <a href="role.html" class="cta-btn">Get Started</a>        </div>
     </div>
-    </main>
-    <footer>
-   
-        <p>&copy; 2024 Interactulum. All rights reserved.</p>
-    </footer>
 </body>
+
 </html>
