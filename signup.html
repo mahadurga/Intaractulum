@@ -1,190 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - Interactulum</title>
+    <title>Alumni Sign-Up</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        *, html, body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #e0e0e0, #ffffff); /* Gradient background */
-            color: #333;
-            text-align: center;
+            box-sizing: border-box;
         }
 
-        header {
-            padding: 2rem;
-            background-color: #ffffff; /* White background for the header */
-            border-bottom: 1px solid #ddd; /* Subtle bottom border */
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            color: #333;
-        }
-
-        main {
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 80px); /* Adjust height to fit within the viewport */
-            padding: 2rem;
+            background: linear-gradient(to bottom right, #ff966d, #fa538d, #89379c);
+            overflow: auto;
+            position: relative;
+        }
+
+        .design {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .design .pill-1,
+        .design .pill-2,
+        .design .pill-3,
+        .design .pill-4,
+        .design .pill-5,
+        .design .pill-6,
+        .design .pill-7,
+        .design .pill-8 {
+            background: linear-gradient(#ff966d, #fa538d, #89379c);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .design .pill-1 {
+            bottom: -150px;
+            left: -150px;
+            position: absolute;
+            width: 150px;
+            height: 300px;
+            border-radius: 75px;
+            animation: pill1-animation 8s infinite;
+        }
+
+        .design .pill-2 {
+            top: -200px;
+            left: -200px;
+            position: absolute;
+            height: 400px;
+            width: 250px;
+            border-radius: 125px;
+            background: linear-gradient(#ff966d, #fa538d);
+            animation: pill2-animation 8s infinite;
+        }
+
+        .design .pill-3 {
+            top: 100px;
+            left: 200px;
+            position: absolute;
+            height: 250px;
+            width: 125px;
+            border-radius: 75px;
+            background: linear-gradient(#fa538d, #89379c);
+            animation: pill3-animation 8s infinite;
+        }
+
+        .design .pill-4 {
+            bottom: -150px;
+            left: 250px;
+            position: absolute;
+            height: 300px;
+            width: 120px;
+            border-radius: 60px;
+            background: linear-gradient(#fa538d, #89379c);
+            animation: pill4-animation 8s infinite;
+        }
+
+        .design .pill-5 {
+            top: -300px;
+            right: -150px;
+            position: absolute;
+            width: 150px;
+            height: 300px;
+            border-radius: 75px;
+            animation: pill5-animation 8s infinite;
+        }
+
+        .design .pill-6 {
+            bottom: -200px;
+            right: -200px;
+            position: absolute;
+            height: 400px;
+            width: 250px;
+            border-radius: 125px;
+            background: linear-gradient(#ff966d, #fa538d);
+            animation: pill6-animation 8s infinite;
+        }
+
+        .design .pill-7 {
+            top: 200px;
+            right: 200px;
+            position: absolute;
+            height: 250px;
+            width: 125px;
+            border-radius: 75px;
+            background: linear-gradient(#fa538d, #89379c);
+            animation: pill7-animation 8s infinite;
+        }
+
+        .design .pill-8 {
+            bottom: -250px;
+            right: 250px;
+            position: absolute;
+            height: 300px;
+            width: 120px;
+            border-radius: 60px;
+            background: linear-gradient(#fa538d, #89379c);
+            animation: pill8-animation 8s infinite;
         }
 
         .form-container {
-            max-width: 400px;
-            margin: auto;
-            padding: 2rem;
-            background: #ffffff; /* White background for the form container */
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            z-index: 1;
+            overflow: auto;
+            box-sizing: border-box;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
-        .form-container h2 {
-            color: #007bff; /* Blue color for headings */
+        .form-container h3 {
             font-size: 1.8rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #007bff; /* Blue underline for emphasis */
-            padding-bottom: 0.5rem;
+            margin-bottom: 20px;
+            color: #333;
         }
 
         .form-container label {
             display: block;
-            margin: 0.5rem 0;
-            font-size: 1rem;
-            color: #333;
+            margin: 10px 0 5px;
+            color: #666;
         }
 
-        .form-container input {
-            width: 100%;
-            padding: 0.8rem;
-            margin: 0.5rem 0;
+        .form-container input,
+        .form-container select {
+            width: calc(100% - 22px); /* Adjust width to account for padding */
+            padding: 10px;
+            margin-bottom: 15px;
             border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
+            border-radius: 5px;
         }
 
         .form-container button {
-            background-color: #007bff; /* Blue color */
-            color: #ffffff; /* White text */
-            padding: 1rem;
+            padding: 10px 20px;
+            color: white;
+            background: linear-gradient(to right, #ff966d, #fa538d, #89379c);
             border: none;
-            border-radius: 4px;
-            font-size: 1.1rem;
+            border-radius: 5px;
             cursor: pointer;
-            width: 100%;
-            transition: background-color 0.3s;
+            font-size: 1.1rem;
+            transition: background 0.3s;
         }
 
         .form-container button:hover {
-            background-color: #0056b3; /* Darker blue for hover effect */
+            background: linear-gradient(to right, #fa538d, #89379c, #ff966d);
         }
 
         .form-container p {
-            margin: 1rem 0;
+            margin-top: 15px;
+            text-align: center;
         }
 
         .form-container a {
-            color: #007bff; /* Blue color */
+            color: #fa538d;
             text-decoration: none;
-            font-weight: bold;
         }
 
-        .form-container a:hover {
-            text-decoration: underline;
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
         }
 
-        nav {
-            margin: 1.5rem 0;
+        @keyframes pill1-animation {
+            0% {
+                transform: rotate(0deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(45deg) translateY(-20px);
+            }
+
+            100% {
+                transform: rotate(0deg) translateY(0);
+            }
         }
 
-        nav a {
-            background-color: #007bff; /* Blue color */
-            color: #ffffff; /* White text */
-            padding: 1rem 2rem;
-            margin: 0.5rem;
-            text-decoration: none;
-            border-radius: 4px;
-            display: inline-block;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
+        @keyframes pill2-animation {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(15deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
         }
 
-        nav a:hover {
-            background-color: #0056b3; /* Darker blue for hover effect */
+        @keyframes pill3-animation {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(15deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
         }
 
-        footer {
-            background-color: #ffffff; /* White background for consistency */
-            color: #666;
-            text-align: center;
-            padding: 1rem;
-            border-top: 1px solid #ddd; /* Subtle top border */
+        @keyframes pill4-animation {
+            0% {
+                transform: rotate(0deg) translateX(0);
+            }
+
+            50% {
+                transform: rotate(20deg) translateX(-20px);
+            }
+
+            100% {
+                transform: rotate(0deg) translateX(0);
+            }
+        }
+
+        @keyframes pill5-animation {
+            0% {
+                transform: rotate(0deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(45deg) translateY(-20px);
+            }
+
+            100% {
+                transform: rotate(0deg) translateY(0);
+            }
+        }
+
+        @keyframes pill6-animation {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(15deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes pill7-animation {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(15deg) scale(1.1);
+            }
+
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes pill8-animation {
+            0% {
+                transform: rotate(0deg) translateX(0);
+            }
+
+            50% {
+                transform: rotate(20deg) translateX(-20px);
+            }
+
+            100% {
+                transform: rotate(0deg) translateX(0);
+            }
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Interactulum</h1>
-    </header>
-    <main>
-        <div class="form-container">
-            <h2>Sign Up</h2>
-            <form id="signupForm">
-                <label for="role">Role:</label>
-                <select id="role" name="role" required>
-                    <option value="">Select Role</option>
-                    <option value="student">Student</option>
-                    <option value="alumni">Alumni</option>
-                </select>
-                <label for="email">Gmail:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <label for="password">Set Password:</label>
-                <input type="password" id="password" name="password" required>
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required>
-                <button type="submit">Sign Up</button>
-                <p>Already have an account? <a href="login.html">Login</a></p>
-            </form>
-        </div>
-<div id="chatbot-container">
-        <iframe src="chatbot.html" style="display:none;"></iframe>
-    </div>
-        <nav>
-            <a href="index.html">Home</a>
-        </nav>
-    </main>
-    <footer>
-        <p>&copy; 2024 Interactulum. All rights reserved.</p>
-    </footer>
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the default way
-            
-            const role = document.getElementById('role').value;
-            const username = document.getElementById('username').value;
-            
-            // Save user role in localStorage
-            localStorage.setItem('role', role);
-            localStorage.setItem('username', username);
-            
-            // Redirect based on role
-            if (role === 'student') {
-                window.location.href = 'student-dashboard.html';
-            } else if (role === 'alumni') {
-                window.location.href = 'alumni-dashboard.html';
-            } else {
-                alert('Please select a valid role.');
-            }
-        });
-    </script>
-</body>
-</html>
 
+<body>
+    <div class="design">
+        <div class="pill-1"></div>
+        <div class="pill-2"></div>
+        <div class="pill-3"></div>
+        <div class="pill-4"></div>
+        <div class="pill-5"></div>
+        <div class="pill-6"></div>
+        <div class="pill-7"></div>
+        <div class="pill-8"></div>
+    </div>
+
+    <div class="form-container">
+        <h3>Sign-Up</h3>
+        <form action="signup.php" method="post">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" required>
+
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="student">Student</option>
+                <option value="alumni">Alumni</option>
+            </select>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a>.</p>
+    </div>
+</body>
+
+</html>
