@@ -58,8 +58,8 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="create-live-session.html">Create Live Session</a>
-        <a href="student-dashboard.html">Back to Dashboard</a>
+       
+        <a href="student-dashboard.php">Back to Dashboard</a>
         <a href="logout.php">Logout</a>
     </div>
     <div class="container">
