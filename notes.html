@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+background: linear-gradient(to right, #fa538d, #89379c, #ff966d);
+
+                     color: white;
+            padding: 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin: 0 15px;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .form-container h3 {
+
+
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fa538d;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #666;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            padding: 10px 20px;
+            color: white;
+            background: linear-gradient(to right, #ff966d, #fa538d, #89379c);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background 0.3s;
+        }
+
+        .form-container button:hover {
+            background: linear-gradient(to right, #fa538d, #89379c, #ff966d);
+        }
+
+        .note-list {
+            list-style-type: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .note-list li {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-to-dashboard {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-to-dashboard a {
+            color: #fa538d;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .back-to-dashboard a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="student-dashboard.php">Back to Dashboard</a>
+    </div>
+
+  
+
+    <div class="form-container">
+        <ul class="note-list">
+            <?php include 'notes.php'; ?>
+        </ul>
+
+        <form action="notes.php" method="post">
+            <h3>Add a new note</h3>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title"><br><br>
+            <label for="content">Content:</label>
+            <textarea id="content" name="content" rows="5"></textarea><br><br>
+            <button type="submit">Add Note</button>
+        </form>
+    </div>
+</body>
+</html>
